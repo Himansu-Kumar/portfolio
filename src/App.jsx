@@ -1,5 +1,7 @@
+import Home from "./Home";
+
 function App() {
-  return <div>Hey I am Himansu</div>;
+  return <Home />;
 }
 
 export default App;
