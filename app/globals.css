@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design tokens: see design-proposals/approved-direction.md §2.
+   `static` always emits the variables so custom CSS below can use var(). */
+@theme static {
+  --color-bg: #17191b;
+  --color-bg-raised: #1e2124;
+  --color-fg: #f2f0e9;
+  --color-fg-muted: #9c9a93;
+  --color-fg-faint: #8f8d86;
+  --color-accent: #b8f36b;
+  --color-on-accent: #17191b;
+  --color-rule: #2e3135;
+  --color-rule-strong: #6b7076;
+
+  --text-display-xl: clamp(3.25rem, 14vw, 12rem);
+  --text-display-xl--line-height: 0.88;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-l: clamp(2.5rem, 7vw, 6rem);
+  --text-display-l--line-height: 0.95;
+  --text-display-l--letter-spacing: -0.02em;
+  --text-display-m: clamp(1.75rem, 3.5vw, 3rem);
+  --text-display-m--line-height: 1.05;
+  --text-display-m--letter-spacing: -0.01em;
+  --text-body-l: 1.25rem;
+  --text-body-l--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+  --text-label-s: 0.6875rem;
+  --text-label-s--line-height: 1.4;
+  --text-label-s--letter-spacing: 0.1em;
+
+  --ease-out-quint: cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* next/font sets these variables on <html>, so they must be inlined. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Height of the sticky header; keeps anchor targets clear of it. */
+:root {
+  --header-h: 4rem;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (width >= 64rem) {
+    body {
+      font-size: 1.0625rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 1px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Centred content column with responsive gutters (16 / 24 / 40px). */
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Mono technical label (indices, metadata keys, nav). */
+@utility label-mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* Text link: static muted underline, lime underline grows in on hover/focus.
+   Works on the <a> itself or on a child span of the <a>. The underline is
+   drawn at the bottom of the content box, so padding (for tap targets) is
+   free to grow around it. */
+@utility link-underline {
+  text-decoration: none;
+  background-origin: content-box;
+  background-image:
+    linear-gradient(var(--color-accent), var(--color-accent)),
+    linear-gradient(var(--color-rule-strong), var(--color-rule-strong));
+  background-repeat: no-repeat;
+  background-position:
+    0 100%,
+    0 100%;
+  background-size:
+    0% 1px,
+    100% 1px;
+  transition:
+    background-size 200ms var(--ease-out-quint),
+    color 200ms var(--ease-out-quint);
+
+  &:hover,
+  &:focus-visible,
+  :is(a:hover, a:focus-visible) > & {
+    background-size:
+      100% 1px,
+      100% 1px;
+  }
+}
+
+/* Motion: transform-only so text is visible from first paint (no LCP delay). */
+@keyframes rise {
+  from {
+    transform: translateY(0.12em);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes draw-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-rise {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: rise 500ms var(--ease-out-quint) both;
+    animation-delay: var(--delay, 0ms);
+  }
+}
+
+@utility animate-draw-x {
+  transform-origin: left;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: draw-x 700ms var(--ease-out-quint) both;
+    animation-delay: var(--delay, 0ms);
+  }
 }
