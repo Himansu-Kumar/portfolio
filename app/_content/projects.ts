@@ -211,4 +211,4 @@ export const brainwave: Project = {
 };
 
 export const projectsIntro =
-  "Four projects: a solo full-stack app, a hackathon team build, and two frontend projects. Each one links to its source code and a live deployment.";
+  "Some projects: a solo full-stack app, a hackathon team build, and two frontend projects. Each one links to its source code and a live deployment.";

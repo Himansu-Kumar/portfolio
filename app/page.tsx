@@ -1,3 +1,4 @@
+import { AboutSection } from "./_components/about-section";
 import { Hero } from "./_components/hero";
 import { PendingSection } from "./_components/pending-section";
 import { ProjectsSection } from "./_components/projects-section";
@@ -11,7 +12,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <ProjectsSection />
-        <PendingSection id="about" index="02" title="About" />
+        <AboutSection />
         <PendingSection id="contact" index="03" title="Contact" />
       </main>
     </>

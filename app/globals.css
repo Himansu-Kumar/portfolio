@@ -255,3 +255,18 @@
   background-size: 24px 24px;
   background-position: -1px -1px;
 }
+
+/* Oversized outlined numeral used as a decorative motif (About tiles).
+   Turns lime when its tile (.group/tile) is hovered or focused within. */
+@utility numeral-outline {
+  font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-rule-strong);
+  transition: -webkit-text-stroke-color 300ms var(--ease-out-quint);
+  user-select: none;
+
+  :where(.group\/tile:hover, .group\/tile:focus-within) & {
+    -webkit-text-stroke-color: var(--color-accent);
+  }
+}
