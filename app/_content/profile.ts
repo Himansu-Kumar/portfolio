@@ -14,12 +14,15 @@ export type NavItem = {
 export const profile = {
   name: { first: "Himansu", last: "Kumar" },
   fullName: "Himansu Kumar",
-  credential: ["B.Tech CSE", "NIT Rourkela", "Odisha, India"],
-  // Short hero intro, composed only from wording in the approved introduction.
+  role: "Software developer",
   heroIntro:
-    "Computer Science and Engineering undergraduate at NIT Rourkela, interested in full-stack development, backend systems, and problem solving. I enjoy building applications involving APIs, authentication, databases, and analytics.",
+    "I build web applications, explore backend systems, and enjoy solving real-world problems with code.",
+  tagline: "Turning ideas into working software",
+  // Technologies used in verified portfolio projects (see context/skills.md).
+  // Listed without proficiency levels.
+  stack: ["React", "Next.js", "Node.js", "PostgreSQL", "MongoDB"],
   metaDescription:
-    "Himansu Kumar — Computer Science and Engineering undergraduate at NIT Rourkela, interested in full-stack development, backend systems, and problem solving.",
+    "Himansu Kumar — software developer. I build web applications, explore backend systems, and enjoy solving real-world problems with code.",
   github: {
     label: "GitHub",
     href: "https://github.com/Himansu-Kumar",

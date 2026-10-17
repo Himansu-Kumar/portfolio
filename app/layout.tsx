@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#17191B",
+  themeColor: "#121416",
   colorScheme: "dark",
 };
 
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
     >
-      <body className="min-h-dvh bg-bg font-sans text-fg">{children}</body>
+      <body className="surface min-h-dvh font-sans text-fg">{children}</body>
     </html>
   );
 }
