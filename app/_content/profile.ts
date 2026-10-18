@@ -27,7 +27,18 @@ export const profile = {
     label: "GitHub",
     href: "https://github.com/Himansu-Kumar",
   } satisfies ExternalLink,
+  // From the resume (context/links.md).
+  email: "himansukumar7240@gmail.com",
 } as const;
+
+// Verified profile URLs (context/links.md): GitHub, LinkedIn, and LeetCode
+// from the resume; X from the GitHub profile. Do not add unverified links.
+export const socials: (ExternalLink & { srLabel?: string })[] = [
+  profile.github,
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/himansu-kumar/" },
+  { label: "LeetCode", href: "https://leetcode.com/u/Himansu_Kumar/" },
+  { label: "X", srLabel: "X (Twitter)", href: "https://x.com/himansu_kumar_" },
+];
 
 export const navItems: NavItem[] = [
   { label: "Projects", href: "#projects" },
