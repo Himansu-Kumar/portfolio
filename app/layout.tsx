@@ -27,6 +27,20 @@ export const metadata: Metadata = {
   description: profile.metaDescription,
   authors: [{ name: profile.fullName, url: profile.github.href }],
   creator: profile.fullName,
+  // Text-only sharing tags. TODO: add `metadataBase` (production URL) and an
+  // Open Graph image once both are decided.
+  openGraph: {
+    type: "website",
+    siteName: profile.fullName,
+    title: profile.fullName,
+    description: profile.metaDescription,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: profile.fullName,
+    description: profile.metaDescription,
+  },
 };
 
 export const viewport: Viewport = {

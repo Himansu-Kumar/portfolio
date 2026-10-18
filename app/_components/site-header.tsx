@@ -18,7 +18,7 @@ export function SiteHeader() {
       <div className="shell flex h-full items-center justify-between gap-4">
         <a
           href="#top"
-          className="group -ml-1 flex min-h-11 items-center px-1 font-display text-[1.875rem] leading-none tracking-[-0.02em] text-fg"
+          className="group -ml-1 flex min-h-11 items-center px-1 font-display text-[1.875rem] leading-none tracking-[-0.015em] text-fg"
         >
           <span aria-hidden="true">
             HK

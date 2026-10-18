@@ -57,7 +57,7 @@ export function SiteFooter() {
 
       <p
         aria-hidden="true"
-        className="numeral-outline mt-12 text-[clamp(3rem,14.5vw,12.5rem)] tracking-[-0.03em] whitespace-nowrap md:mt-16"
+        className="numeral-outline mt-12 text-[clamp(3rem,14.5vw,12.5rem)] tracking-[-0.02em] whitespace-nowrap md:mt-16"
       >
         {profile.fullName}
       </p>

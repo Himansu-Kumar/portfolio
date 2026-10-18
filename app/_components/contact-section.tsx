@@ -17,7 +17,7 @@ export function ContactSection() {
       <div className="reveal mt-10 md:mt-16">
         <h2
           id="contact-title"
-          className="font-display text-[clamp(3rem,10.5vw,9.5rem)] leading-[0.9] font-normal tracking-[-0.03em] text-fg"
+          className="font-display text-[clamp(3rem,10.5vw,9.5rem)] leading-[0.9] font-normal tracking-[-0.02em] text-fg"
         >
           {contact.headline.lines.map((line, i) => (
             <span key={line} className="block">
