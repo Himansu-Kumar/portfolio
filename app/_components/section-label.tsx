@@ -1,12 +1,7 @@
-// Top-level section marker: strong rule, lime two-digit number (01, 02, …).
-// Projects inside a section use the quieter ProjectIndexRow (1.1, 1.2, …).
-
 type SectionLabelProps = {
   index: string;
   title: string;
-  /** Optional right-aligned note, e.g. a date range. */
   aside?: string;
-  /** Render the label as the section heading (for sections without one). */
   as?: "p" | "h2";
   id?: string;
 };

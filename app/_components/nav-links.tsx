@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { navItems } from "../_content/profile";
 
-// Marks the nav item for the section crossing the middle of the viewport with
-// aria-current. Progressive enhancement: without JS the links work as normal.
 export function NavLinks() {
   const [active, setActive] = useState<string | null>(null);
 

@@ -1,6 +1,3 @@
-// Small, fact-based visual motifs for the two featured projects. Both are
-// built from verified behaviour only (context/projects.md); no figures.
-
 function FlowRow({
   label,
   steps,
@@ -35,7 +32,6 @@ function FlowRow({
   );
 }
 
-// Freelance Helper: the real data model and invoice lifecycle.
 export function FreelanceFlow() {
   return (
     <figure className="flex flex-col gap-5 border-t border-rule pt-5">
@@ -47,8 +43,8 @@ export function FreelanceFlow() {
       />
       <figcaption className="sr-only">
         Freelance Helper links each client to projects and invoices. Invoices
-        move from draft to sent, then to paid or overdue, and can be exported
-        as a PDF.
+        move from draft to sent, then to paid or overdue, and can be exported as
+        a PDF.
       </figcaption>
     </figure>
   );
@@ -60,8 +56,6 @@ const resources = [
   { name: "Land", unit: "cm²" },
 ];
 
-// Planet-Prompt: what each logged prompt is converted into. Units only, no
-// values; the product's own figures are estimates, not results to quote.
 export function PlanetFootprint() {
   return (
     <figure className="border-t border-rule pt-5">

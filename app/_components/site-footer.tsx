@@ -1,7 +1,5 @@
 import { profile, socials } from "../_content/profile";
 
-// Closing footer: compact profile links (secondary to the contact CTA), a
-// back-to-top link, and an outlined wordmark that echoes the hero.
 export function SiteFooter() {
   const links = [
     ...socials.map((s) => ({ ...s, external: true })),

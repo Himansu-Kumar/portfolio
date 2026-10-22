@@ -94,14 +94,6 @@ export function Hero() {
           <OrbitMark className="hidden w-full max-w-60 self-end lg:block" />
         </aside>
       </div>
-
-      {/* <div className="label-mono flex min-h-16 items-center gap-3 border-t border-rule py-5 text-fg-faint">
-        <span
-          aria-hidden="true"
-          className="size-1.5 shrink-0 rounded-full bg-accent"
-        />
-        {profile.tagline}
-      </div> */}
     </section>
   );
 }

@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 
 type Status = "idle" | "copied" | "failed";
 
-// Copies the address to the clipboard. Falls back to a temporary textarea
-// where the Clipboard API is unavailable (e.g. non-secure contexts).
 async function copyText(text: string) {
   if (navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
@@ -27,9 +25,12 @@ export function CopyEmail({ email }: { email: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current);
-  }, []);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
 
   async function handleCopy() {
     try {
@@ -43,7 +44,11 @@ export function CopyEmail({ email }: { email: string }) {
   }
 
   const label =
-    status === "copied" ? "Copied" : status === "failed" ? "Couldn’t copy" : "Copy address";
+    status === "copied"
+      ? "Copied"
+      : status === "failed"
+        ? "Couldn’t copy"
+        : "Copy address";
 
   return (
     <>
@@ -52,7 +57,9 @@ export function CopyEmail({ email }: { email: string }) {
         onClick={handleCopy}
         className="link-underline -my-3 inline-flex min-h-11 cursor-pointer items-center py-3 font-mono text-[0.75rem] text-fg-soft hover:text-fg focus-visible:text-fg"
       >
-        <span className={status === "copied" ? "text-accent" : undefined}>{label}</span>
+        <span className={status === "copied" ? "text-accent" : undefined}>
+          {label}
+        </span>
         <span className="sr-only"> ({email})</span>
       </button>
       <span role="status" aria-live="polite" className="sr-only">

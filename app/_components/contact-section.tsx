@@ -3,8 +3,6 @@ import { profile } from "../_content/profile";
 import { CopyEmail } from "./copy-email";
 import { SectionLabel } from "./section-label";
 
-// 03 Contact: oversized closing question, short invitation, and the email
-// address as the single primary call to action. Profiles live in the footer.
 export function ContactSection() {
   return (
     <section

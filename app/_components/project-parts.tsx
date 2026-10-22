@@ -1,10 +1,5 @@
 import type { Project } from "../_content/projects";
 
-// Shared pieces used by every project layout, so spacing, type, and link
-// behaviour stay consistent across the different compositions.
-
-// Project marker (1.1, 1.2, …): thin rule, muted number. Deliberately quieter
-// than SectionLabel so sections and projects read as different levels.
 export function ProjectIndexRow({ project }: { project: Project }) {
   return (
     <div className="label-mono flex items-baseline justify-between gap-4 border-t border-rule pt-3 text-fg-faint">

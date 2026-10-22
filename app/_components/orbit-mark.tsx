@@ -1,6 +1,3 @@
-// Decorative linework for the hero: concentric rings with dial ticks and a
-// single lime point on the outer orbit. Purely ornamental (aria-hidden).
-
 const TICKS = Array.from({ length: 24 }, (_, i) => i * 15);
 
 export function OrbitMark({ className }: { className?: string }) {
@@ -12,10 +9,7 @@ export function OrbitMark({ className }: { className?: string }) {
       focusable="false"
       className={className}
     >
-      <g
-        stroke="var(--color-rule-strong)"
-        strokeOpacity="0.55"
-      >
+      <g stroke="var(--color-rule-strong)" strokeOpacity="0.55">
         <circle cx="120" cy="120" r="104" />
         <circle cx="120" cy="120" r="64" strokeDasharray="2 5" />
         <circle cx="146" cy="120" r="34" />

@@ -17,8 +17,10 @@ import {
 import { ProjectShot } from "./project-shot";
 import { SectionLabel } from "./section-label";
 
-const FEATURED_SIZES = "(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 100vw";
-const SECONDARY_SIZES = "(min-width: 1280px) 584px, (min-width: 1024px) 46vw, 100vw";
+const FEATURED_SIZES =
+  "(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 100vw";
+const SECONDARY_SIZES =
+  "(min-width: 1280px) 584px, (min-width: 1024px) 46vw, 100vw";
 
 export function ProjectsSection() {
   return (
@@ -70,7 +72,6 @@ function ProjectTitle({
   );
 }
 
-// 1.1: text left, screenshot and workflow right.
 function FeaturedFreelanceHelper() {
   const p = freelanceHelper;
   return (
@@ -79,16 +80,14 @@ function FeaturedFreelanceHelper() {
       <div className="mt-8 grid grid-cols-1 gap-y-10 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-12">
         <header className="flex flex-col gap-6 lg:col-span-5">
           <ProjectTitle project={p} />
-          <p className="max-w-[46ch] text-body-l text-fg-soft">{p.description}</p>
+          <p className="max-w-[46ch] text-body-l text-fg-soft">
+            {p.description}
+          </p>
           <ProjectPurpose text={p.purpose} />
         </header>
 
         <div className="flex flex-col gap-8 lg:col-span-7 lg:row-span-2">
-          <ProjectShot
-            image={p.image}
-            name={p.name}
-            sizes={FEATURED_SIZES}
-          />
+          <ProjectShot image={p.image} name={p.name} sizes={FEATURED_SIZES} />
           <FreelanceFlow />
         </div>
 
@@ -102,7 +101,6 @@ function FeaturedFreelanceHelper() {
   );
 }
 
-// 1.2: mirrored. Banner and footprint motif left, text right.
 function FeaturedPlanetPrompt() {
   const p = planetPrompt;
   return (
@@ -111,16 +109,14 @@ function FeaturedPlanetPrompt() {
       <div className="mt-8 grid grid-cols-1 gap-y-10 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-12">
         <header className="flex flex-col gap-6 lg:col-span-5 lg:col-start-8 lg:row-start-1">
           <ProjectTitle project={p} />
-          <p className="max-w-[46ch] text-body-l text-fg-soft">{p.description}</p>
+          <p className="max-w-[46ch] text-body-l text-fg-soft">
+            {p.description}
+          </p>
           <ProjectPurpose text={p.purpose} />
         </header>
 
         <div className="flex flex-col gap-8 lg:col-span-7 lg:col-start-1 lg:row-span-2 lg:row-start-1">
-          <ProjectShot
-            image={p.image}
-            name={p.name}
-            sizes={FEATURED_SIZES}
-          />
+          <ProjectShot image={p.image} name={p.name} sizes={FEATURED_SIZES} />
           <PlanetFootprint />
         </div>
 
@@ -134,7 +130,6 @@ function FeaturedPlanetPrompt() {
   );
 }
 
-// 1.3 and 1.4: screenshot-led, half width, staggered.
 function SecondaryProject({
   project,
   className = "",

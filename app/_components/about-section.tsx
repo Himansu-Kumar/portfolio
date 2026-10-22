@@ -1,10 +1,6 @@
 import { about } from "../_content/about";
 import { SectionLabel } from "./section-label";
 
-// 02 About: "Beyond the build". A short professional snapshot, then interest
-// tiles of deliberately different weights (cricket and food large, football
-// medium, movies small). Every detail is visible without hover.
-
 const tileBase =
   "group/tile relative overflow-hidden border border-rule transition-colors duration-200 hover:border-rule-strong";
 
@@ -17,7 +13,6 @@ export function AboutSection() {
     >
       <SectionLabel index="02" title="About" aside="Beyond the build" />
 
-      {/* Intro: personality first, credentials second */}
       <div className="mt-8 grid grid-cols-1 gap-y-12 md:mt-12 lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-7">
           <h2
@@ -42,7 +37,6 @@ export function AboutSection() {
         </dl>
       </div>
 
-      {/* Interests */}
       <div className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-8 md:gap-5 lg:grid-cols-12">
         <CricketTile />
         <FootballTile />
@@ -87,7 +81,6 @@ function Numeral({ value, className }: { value: string; className: string }) {
   );
 }
 
-// 2.1: the largest tile. Scorecard strip, outlined 18.
 function CricketTile() {
   const c = about.cricket;
   return (
@@ -106,7 +99,10 @@ function CricketTile() {
 
       <dl className="relative grid w-full max-w-md grid-cols-3 border-t border-l border-rule bg-bg/80">
         {c.card.map((cell) => (
-          <div key={cell.key} className="min-w-0 border-r border-b border-rule px-2 py-2.5 sm:px-3">
+          <div
+            key={cell.key}
+            className="min-w-0 border-r border-b border-rule px-2 py-2.5 sm:px-3"
+          >
             <dt className="font-mono text-[0.6875rem] tracking-widest text-fg-faint uppercase">
               {cell.key}
             </dt>
@@ -120,7 +116,6 @@ function CricketTile() {
   );
 }
 
-// 2.2: medium. Fixture-list of clubs, outlined 7.
 function FootballTile() {
   const f = about.football;
   return (
@@ -137,16 +132,20 @@ function FootballTile() {
         {f.headline}
       </p>
 
-      {/* Right gutter keeps the list and quote clear of the outlined 7. */}
       <div className="relative pr-20 md:pr-24 lg:pr-32">
-        <p className="mb-2 font-mono text-[0.8125rem] text-fg-muted">{f.idol}</p>
+        <p className="mb-2 font-mono text-[0.8125rem] text-fg-muted">
+          {f.idol}
+        </p>
         <ul className="border-t border-rule">
           {f.clubs.map((club) => (
             <li
               key={club}
               className="flex items-center gap-3 border-b border-rule py-2 text-fg-soft"
             >
-              <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-fg-faint" />
+              <span
+                aria-hidden="true"
+                className="size-1.5 shrink-0 rounded-full bg-fg-faint"
+              />
               {club}
             </li>
           ))}
@@ -160,7 +159,6 @@ function FootballTile() {
   );
 }
 
-// One compact line connecting the two to qualities worth keeping.
 function MentalityStrip() {
   const m = about.mentality;
   return (
@@ -170,7 +168,11 @@ function MentalityStrip() {
         {m.traits.map((trait, i) => (
           <span key={trait}>
             {trait}
-            <span className={i === m.traits.length - 1 ? "text-accent" : "text-fg-faint"}>
+            <span
+              className={
+                i === m.traits.length - 1 ? "text-accent" : "text-fg-faint"
+              }
+            >
               .
             </span>{" "}
           </span>
@@ -183,7 +185,6 @@ function MentalityStrip() {
   );
 }
 
-// 2.4: the smallest tile, a ticket stub (sits right of the food tile).
 function MoviesTile() {
   const mv = about.movies;
   return (
@@ -191,9 +192,14 @@ function MoviesTile() {
       <div
         className={`${tileBase} flex h-full min-h-48 flex-col justify-between gap-8 border-dashed p-5 sm:p-7`}
       >
-        {/* Ticket notches */}
-        <span aria-hidden="true" className="absolute top-1/2 -left-3 size-6 -translate-y-1/2 rounded-full border border-rule bg-bg" />
-        <span aria-hidden="true" className="absolute top-1/2 -right-3 size-6 -translate-y-1/2 rounded-full border border-rule bg-bg" />
+        <span
+          aria-hidden="true"
+          className="absolute top-1/2 -left-3 size-6 -translate-y-1/2 rounded-full border border-rule bg-bg"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute top-1/2 -right-3 size-6 -translate-y-1/2 rounded-full border border-rule bg-bg"
+        />
 
         <TileHeader index={mv.index} title={mv.title} />
         <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
@@ -209,7 +215,6 @@ function MoviesTile() {
   );
 }
 
-// 2.3: large, editorial menu card (left of the movies stub).
 function FoodTile() {
   const fd = about.food;
   return (
